@@ -17,5 +17,7 @@ In Renamaida, a dictionary is used in which the keys are instructions of a certa
 
 When the plugin is launched, Renemaida creates a signature base of the current binary using the same dictionary, and compares the values of these keys one by one with each other using the Jaro-Winkler Similarity algorithm. Functions are renamed only with similarity values above 0.83 units. An additional limitation is functions with a length of less than 10 instructions, as there is very little data for comparison.
 
+The more the library that you compile and the library that is linked with the firmware are similar, the more functions will be recognized. This applies not only to the release version of the library, but also to the version of the architecture under which the firmware will work.
+
 # Contributing
 If you encounter any issues with Renamaida, or would like to contribute to its development, please submit an issue or pull request on the GitHub repository.
