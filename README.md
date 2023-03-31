@@ -12,5 +12,10 @@ Once you have the compiled library, you can use the "Renamaida signature generat
 
 To rename unknown functions in a firmware binary, open the binary in IDA Pro and select Renamaida from the "Edit" menu. A window will appear where you can select the JSON signature file to use for renaming. Once you've selected a file, Renamaida will use the signatures to rename any unknown functions in the binary that match the signatures.
 
+# How the algorithm works
+In Renamaida, a dictionary is used in which the keys are instructions of a certain architecture, and their values are the letters of the English alphabet. When creating a JSON signature database, the names of functions are stored in the form of keys and a string of letters of the alphabet that represent the sequence of instructions for this function.
+
+When the plugin is launched, Renemaida creates a signature base of the current binary using the same dictionary, and compares the values of these keys one by one with each other using the Jaro-Winkler Similarity algorithm. Functions are renamed only with similarity values above 0.83 units. An additional limitation is functions with a length of less than 10 instructions, as there is very little data for comparison.
+
 # Contributing
 If you encounter any issues with Renamaida, or would like to contribute to its development, please submit an issue or pull request on the GitHub repository.
