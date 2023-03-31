@@ -1,5 +1,5 @@
 # Renamaida Plugin for IDA Pro
-Introduction
+# Introduction
 Renamaida is a plugin for the IDA Pro disassembler that helps to rename unknown functions in firmware binaries. It does this by using pre-generated signature files to identify functions imported from open libraries or statically linked, and then renaming them based on their signatures.
 
 # Installation
