@@ -264,7 +264,7 @@ class RenamaidaPlugin(ida_idaapi.plugin_t):
             return
 
         # Get the file name from the path
-        signature_base_name = os.path.basename(file_path)
+        signature_base_name = os.path.abspath(file_path)
 
         # Register the action
         rename_unk_funcs = idaapi.action_desc_t(
