@@ -132,6 +132,10 @@ arch = idaapi.get_inf_structure().procName.lower()
 for function_ea in idautils.Functions():
     # Get the function name
     function_name = idc.get_func_name(function_ea)
+    
+    # Pass system or api functions
+    if function_name.startswith("__"):
+        continue
 
     # Get the function instructions and join them into a string
     if arch in arm_dict:
