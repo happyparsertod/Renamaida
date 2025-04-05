@@ -263,9 +263,7 @@ class RenamaidaRename(idaapi.action_handler_t):
             flag = False
 
             while True:
-                result = self.compare(
-                    self.unknown_func_names[unk][0], self.unknown_func_names[unk][1]
-                )
+                result = self.compare(self.unknown_func_names[unk][0], self.unknown_func_names[unk][1])
 
                 if result[1] < 0.83:
                     break
@@ -273,30 +271,18 @@ class RenamaidaRename(idaapi.action_handler_t):
                     self.comparison_result[unk] = result
 
                 for comp in self.comparison_result:
-                    if (
-                        self.comparison_result[comp][0]
-                        == self.comparison_result[unk][0]
-                        and comp != unk
-                    ):
-                        if (
-                            self.comparison_result[comp][1]
-                            > self.comparison_result[unk][1]
-                        ):
+                    if (self.comparison_result[comp][0] == self.comparison_result[unk][0] and comp != unk):
+                        if (self.comparison_result[comp][1] > self.comparison_result[unk][1]):
                             flag = True
                             break
 
-                        elif (
-                            self.comparison_result[comp][1]
-                            < self.comparison_result[unk][1]
-                        ):
+                        elif (self.comparison_result[comp][1] < self.comparison_result[unk][1]):
                             unk = comp
                             flag = True
                             break
 
                 if flag:
-                    self.unknown_func_names[unk][1].append(
-                        self.comparison_result[unk][0]
-                    )
+                    self.unknown_func_names[unk][1].append(self.comparison_result[unk][0])
                     del self.comparison_result[unk]
                     flag = False
                     continue
